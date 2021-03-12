@@ -1,0 +1,32 @@
+{% extends 'Grocery/base.html' %}
+{% block content %}
+    	<div class="container add_container">
+
+            <h1>Add Grocery List</h1>
+            <form method="POST" action="update/{{ items.id }}">
+                {% csrf_token %}
+                
+                    <div class="form-group">
+                        <label>Item name</label>
+                        <input type="text" name ='item_name' value="{{ items.item_name }}" class="form-control" placeholder="Item name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Item quantity</label>
+                        <input type="text" name="item_quantity" value="{{ items.item_quantity }}" class="form-control" placeholder="Item quantity"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Item status</label>
+                        <select class="form-control" name="item_status" >
+                            <option value="PENDING">PENDING</option>
+                            <option value="BOUGHT">BOUGHT</option>
+                            <option value="NOT AVAILABLE">NOT AVAILABLE</option>
+                        </select>
+                    </div>
+                
+                    <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> Update</button>
+                
+            </form>
+        </div>
+      
+{% endblock content %}    
+            

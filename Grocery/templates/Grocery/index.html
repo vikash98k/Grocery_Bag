@@ -1,0 +1,44 @@
+
+{% extends 'Grocery/base.html'%}
+{% load static %}
+{% block content %}
+    
+    
+    <div class="container mt-5">
+      <div class="row">
+          <div class="col-lg-12">
+            {% if user.is_authenticated %}
+            <h1>View Grocery List</h1> 
+              {% else %}
+                <h3 class="mb-4">If you want To Access This Grocery Store Please Register/Login First!</h3>
+                <img src="{% static 'Grocery/grocery.jpg' %}" align="center" width="100%">  
+          {% endif %}                  
+          </div>                        
+        </div>
+        <div class="row mt-4 ">
+          {% if user.is_authenticated %}
+            {% for item in items %}
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ item.item_name }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">{{ item.item_quantity }}</h6>
+                          <p class="text-success">{{ item.item_status }}</p>
+                          <a href="edit/{{ item.id }}">Edit</a>&nbsp;&nbsp;&nbsp;<a href="delete/{{ item.id }}">Delete</a>
+                        </div>
+                      </div>
+                </div>
+            {% endfor %} 
+            {% endif %} 
+             
+    </div>
+  </div>
+  
+{% endblock %}
+
+
+
+
+            
+
+
